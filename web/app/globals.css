@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --echo-blue-50: #eff6ff;
+  --echo-blue-700: #1d4ed8;
+  --echo-blue-900: #0c2655;
+  --echo-gold-700: #b45309;
+  --ink: #111111;
+  --ink-muted: #3f3f3f;
+  --paper: #ffffff;
+  --rule: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Disable automatic dark mode to keep a white newspaper background */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-gold-700 { color: var(--echo-gold-700); }
+.text-blue-900 { color: var(--echo-blue-900); }
+.text-blue-800 { color: #1e40af; }
+.text-blue-700 { color: var(--echo-blue-700); }
+.bg-blue-50 { background-color: var(--echo-blue-50); }
+.border-blue-200 { border-color: #bfdbfe; }
+
+/* Newspaper aesthetics */
+.masthead-title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 0.02em;
+}
+
+.headline-serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.byline {
+  color: var(--ink-muted);
+}
+
+.section-rule {
+  border-top: 1px solid var(--rule);
+}
+
+.deck {
+  color: var(--ink-muted);
+}
+
+.prose-article {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.75;
+  font-size: 1.125rem;
+}
+
+.drop-cap:first-letter {
+  float: left;
+  font-size: 3.25rem;
+  line-height: 0.9;
+  padding-right: 0.25rem;
+  padding-top: 0.2rem;
+  font-weight: 700;
+}
+
+.grid-newspaper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-newspaper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print-friendly styles */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header nav, footer { display: none !important; }
+  .section-rule { border-top: 1px solid #000000 !important; }
+  main { max-width: 700px; margin: 0 auto; }
+  a { color: #000000; text-decoration: underline; }
+}

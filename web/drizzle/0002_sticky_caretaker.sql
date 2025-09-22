@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "status" varchar(16) DEFAULT 'pending' NOT NULL;
